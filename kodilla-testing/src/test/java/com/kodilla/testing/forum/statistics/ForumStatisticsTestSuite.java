@@ -1,6 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +16,12 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Tests of calculateAdvStatistics method")
 public class ForumStatisticsTestSuite {
-
+    private static int testCounter = 1;
+    @BeforeEach
+    void beforeEveryTest(){
+        System.out.println("Test #" + testCounter + " is starting");
+        testCounter++;
+    }
     @Mock
     Statistics statisticsMock;
 
@@ -179,5 +185,21 @@ public class ForumStatisticsTestSuite {
         Assertions.assertEquals(0.5, result);
         Assertions.assertEquals(0.4, result2);
         Assertions.assertEquals(0.2, result3);
+    }
+
+    @DisplayName("Test of showStatistics method")
+    @Test
+    void testOfShowStatistics(){
+
+        List<String> list = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            list.add("user");
+        }
+        when(statisticsMock.postsCount()).thenReturn(40);
+        when(statisticsMock.commentsCount()).thenReturn(20);
+        when(statisticsMock.usersNames()).thenReturn(list);
+        ForumStatistics forumStatistics = new ForumStatistics();
+        forumStatistics.calculateAdvStatistics(statisticsMock);
+        forumStatistics.showStatistics();
     }
 }

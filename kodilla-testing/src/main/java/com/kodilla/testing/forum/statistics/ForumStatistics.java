@@ -26,7 +26,12 @@ public class ForumStatistics {
     }
 
     public void showStatistics(){
-
+        System.out.println("Quantity of posts: " + getQuantityOfPosts());
+        System.out.println("Quantity of comments: " + getQuantityOfComments());
+        System.out.println("Quantity of Users: " + getQuantityOfUsers());
+        System.out.println("Average posts per user: " + getAveragePostPerUser());
+        System.out.println("Average comments per user " + getAverageCommentsPerUser());
+        System.out.println("Average comments per post: " + getAverageCommentsPerPost());
     }
 
     public int getQuantityOfUsers() {
