@@ -1,69 +1,115 @@
 package com.kodilla.rps;
 
-import java.util.Random;
-
 public class Game {
 
     private Player player;
-    private static int playerPoints;
-    private static int compPoints;
-    private static int lengthOfTheGame;
+    private int playerPoints;
+    private int compPoints;
+    private int lengthOfTheGame;
     private boolean gameOver = false;
-    private String[] rps = {"Rock", "Paper", "Scissor"};
+    private String[] rps = {"Rock", "Paper", "Scissor", "Lizard", "Spock"};
+    private int[] rpsValue = {0,1, 2, 3, 4};
     public Game(Player player,int lengthOfTheGame) {
         this.player = player;
         this.lengthOfTheGame = lengthOfTheGame;
     }
 
     public void showMenu() {
-        System.out.println("\nHi!");
-        System.out.println("Make a choise");
+        System.out.println("\nMake a choice");
         System.out.println("1. Rock");
         System.out.println("2. Paper");
         System.out.println("3. Scissor");
+        System.out.println("4. Lizard");
+        System.out.println("5. Spock");
         System.out.println("x. Exit");
         System.out.println("n. Start New Game");
     }
 
     public void showGameOverMenu() {
-        System.out.println("\nHey, game is over! Make a choise what would you like to do now: ");
+        System.out.println("\nHey, game is over! Make a choice what would you like to do now: ");
         System.out.println("x. Exit");
         System.out.println("n. Start New Game");
     }
 
-    public void action(int i) {
-        Random randomChoise = new Random();
-        int rand = (randomChoise.nextInt(3))  ;
+  /*  public void generateDate(Move move, String mode) {
+        if(mode.equals("EASY"))
+        rpsValue = new int[]{0, 1, 2, move.getValue()};
+        if(mode.equals("NORMAL"))
+        rpsValue = new int[]{1, 2, 3};
+        if(mode.equals("HARD")){
+            if(move.getValue() == 0){
+                rpsValue = new int[]{0, 1, 1, 2};
+            }
+            if(move.getValue() == 1) {
+                rpsValue = new int[]{0, 1, 2, 2};
+            }
+            if(move.getValue() == 2) {
+                rpsValue = new int[]{0, 0, 1, 2};
+            }
+        }
 
-        System.out.println("\nChoise of player " + player.getName() + ": " + rps[i]);
-        System.out.println("Choise of computer: " + rps[rand]);
+    } */
 
-        if(i == rand) {
+    public void action(Move move) {
+        int rand = (int) (Math.random() * rpsValue.length);
+        int value = move.getValue();
+        System.out.println("\nChoice of player " + player.getName() + ": " + rps[value]);
+        System.out.println("Choice of computer: " + rps[rand]);
+
+        if(value == rand) {
             System.out.println("Equal result. No points.");
         }
-        if(i == 0 && rand ==2 ) {
+        if(value == 0 && rand == rpsValue[2]) {
             playerPoints++;
             System.out.println("\nPoint for player " + player.getName());
         }
-        if(i == 0 && rand ==1 ) {
+        if(value == 0 && rand ==rpsValue[1] ) {
             compPoints++;
             System.out.println("\nPoint for computer ");
         }
-        if(i == 1 && rand ==0 ) {
+        if(value == 1 && rand == rpsValue[0] ) {
             playerPoints++;
             System.out.println("\nPoint for player " + player.getName());
         }
-        if(i == 1 && rand ==2 ) {
+        if(value == 1 && rand == rpsValue[2] ) {
             compPoints++;
             System.out.println("\nPoint for computer");
         }
-        if(i == 2 && rand ==1 ) {
+        if(value == 1 && rand == rpsValue[4] ) {
+            playerPoints++;
+            System.out.println("\nPoint for computer");
+        }
+        if(value == 2 && rand == rpsValue[3] ) {
             playerPoints++;
             System.out.println("\nPoint for player " + player.getName());
         }
-        if(i == 2 && rand ==0 ) {
+        if(value == 2 && rand ==rpsValue[1]) {
+            playerPoints++;
+            System.out.println("\nPoint for player " + player.getName());
+        }
+        if(value == 2 && rand == rpsValue[0] ) {
             compPoints++;
             System.out.println("\nPoint for computer");
+        }
+        if(value == 3 && rand == rpsValue[0] ) {
+            compPoints++;
+            System.out.println("\nPoint for computer");
+        }
+        if(value == 3 && rand == rpsValue[4] ) {
+            playerPoints++;
+            System.out.println("\nPoint for player " + player.getName());
+        }
+        if(value == 3 && rand == rpsValue[1] ) {
+            playerPoints++;
+            System.out.println("\nPoint for player " + player.getName());
+        }
+        if(value == 4 && rand == rpsValue[2] ) {
+            playerPoints++;
+            System.out.println("\nPoint for player " + player.getName());
+        }
+        if(value == 4 && rand == rpsValue[0] ) {
+            playerPoints++;
+            System.out.println("\nPoint for player " + player.getName());
         }
 
         System.out.println("Currently result: " + player.getName() + " " + getPlayerPoints() + ":" + getCompPoints() + " Computer");
@@ -85,15 +131,15 @@ public class Game {
         return player;
     }
 
-    public static int getPlayerPoints() {
+    public int getPlayerPoints() {
         return playerPoints;
     }
 
-    public static int getCompPoints() {
+    public int getCompPoints() {
         return compPoints;
     }
 
-    public static int getLengthOfTheGame() {
+    public int getLengthOfTheGame() {
         return lengthOfTheGame;
     }
 

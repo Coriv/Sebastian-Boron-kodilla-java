@@ -1,13 +1,14 @@
 package com.kodilla.rps;
 
-public class Rock implements Move {
-    final String name = "Rock";
-    final int value = 0;
+public class Paper implements Move{
+    final String name = "Paper";
+    final int value = 1;
 
     public String getName() {
         return name;
     }
 
+    @Override
     public int getValue() {
         return value;
     }
