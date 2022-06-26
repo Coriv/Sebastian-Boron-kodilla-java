@@ -1,7 +1,5 @@
 package com.kodilla.rps;
-
 public class Game {
-
     private Player player;
     private int playerPoints;
     private int compPoints;

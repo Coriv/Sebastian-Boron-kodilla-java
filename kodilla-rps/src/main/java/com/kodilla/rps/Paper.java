@@ -7,7 +7,6 @@ public class Paper implements Move{
     public String getName() {
         return name;
     }
-
     @Override
     public int getValue() {
         return value;
