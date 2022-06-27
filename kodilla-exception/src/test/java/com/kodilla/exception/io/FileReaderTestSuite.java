@@ -35,7 +35,7 @@ public class FileReaderTestSuite {
     }
 
     @Test
-    void testProbrablyWillThrowExceptionMethod() {
+    void testProbablyWillThrowExceptionMethod() {
         SecondChallenge secondChallenge = new SecondChallenge();
 
         assertAll(
