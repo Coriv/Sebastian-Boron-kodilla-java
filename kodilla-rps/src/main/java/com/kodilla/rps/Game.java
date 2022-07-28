@@ -29,25 +29,6 @@ public class Game {
         System.out.println("n. Start New Game");
     }
 
-  /*  public void generateDate(Move move, String mode) {
-        if(mode.equals("EASY"))
-        rpsValue = new int[]{0, 1, 2, move.getValue()};
-        if(mode.equals("NORMAL"))
-        rpsValue = new int[]{1, 2, 3};
-        if(mode.equals("HARD")){
-            if(move.getValue() == 0){
-                rpsValue = new int[]{0, 1, 1, 2};
-            }
-            if(move.getValue() == 1) {
-                rpsValue = new int[]{0, 1, 2, 2};
-            }
-            if(move.getValue() == 2) {
-                rpsValue = new int[]{0, 0, 1, 2};
-            }
-        }
-
-    } */
-
     public void action(Move move) {
         int rand = (int) (Math.random() * rpsValue.length);
         int value = move.getValue();
