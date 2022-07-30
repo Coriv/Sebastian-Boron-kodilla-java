@@ -1,7 +1,7 @@
 package com.kodilla.good.patterns.challenges.Store;
 
 public class User {
-    String login;
+    private String login;
 
     public User(String login) {
         this.login = login;
